@@ -47,10 +47,10 @@ class LearningAgent(Agent):
             self.epsilon=0
             self.alpha=0
         else:
-            #self.epsilon=self.epsilon-0.05
-            self.t = self.t + 1
+            self.t = self.t+ 1
+            self.epsilon=0.99*self.epsilon
             #self.epsilon = 1./(self.t*self.t)
-            self.epsilon = math.fabs(math.cos(self.alpha*self.t))
+            #self.epsilon = math.fabs(math.cos(self.alpha*self.t))
         return
 
     def build_state(self):
@@ -214,7 +214,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=15,tolerance=0.001)
+    sim.run(n_test=15,tolerance=0.0001)
 
 
 if __name__ == '__main__':
